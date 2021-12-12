@@ -1,13 +1,13 @@
-import {Schema, model} from 'mongoose';
+import {Schema, model, Document} from 'mongoose';
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import IUser from "../interfaces/user.js";
+import {IUser, UserModel} from "../interfaces/user.js";
 import Order from '../models/order.js';
-import dotenv from "dotenv";
-dotenv.config("../../.env");
+// import dotenv from "dotenv";
+// dotenv.config("../../.env");
 
-const userSchema = new Schema<IUser>({
+const userSchema = new Schema<IUser, UserModel>({
     name: {
         type: String,
         required: true
@@ -58,12 +58,24 @@ userSchema.methods.toJSON = function() {
     return userObject;
 }
 
-userSchema.methods.generateAuthToken = async function() {
-    const user = this;
-    const token = jwt.sign({_id: user._id.toString()}, process.env.JWT_SECRET as string);
-    user.tokens = user.tokens.concat({token});
-    await user.save();
-    return token;
+userSchema.methods.generateAuthToken = async function(userInstance: IUser) {
+    try {
+        // console.log(userInstance);
+        // console.log("generateAuthToken");
+        const user = userInstance;
+        // console.log(user);
+        // console.log(user._id);
+        // console.log(User);
+        const token = jwt.sign({_id: user._id.toString()}, "BOLUWATIFE");
+        // console.log(token);
+        user.tokens = user.tokens.concat({token});
+        // console.log(user.tokens);
+        await user.save();
+        return token;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
 } 
 
 userSchema.statics.findByCredentials = async (email: string, password: string) => {
@@ -79,7 +91,7 @@ userSchema.statics.findByCredentials = async (email: string, password: string) =
 }
 
 
-userSchema.pre('save', async function hashPassword(next) {
+userSchema.pre<IUser>('save', async function hashPassword(next) {
     const user = this;
     if(user.isModified('password')){
         user.password = await bcrypt.hash(user.password, 8);
@@ -88,13 +100,13 @@ userSchema.pre('save', async function hashPassword(next) {
 });
 
 
-userSchema.pre('remove', async function deleteUserOrders(next) {
+userSchema.pre<IUser>('remove', async function deleteUserOrders(next) {
     const user = this;
     await Order.deleteMany({user: user._id});
     next();
 });
 
 
-const User = model('user', userSchema);
+const User = model<IUser, UserModel>('user', userSchema);
 
 export = User;

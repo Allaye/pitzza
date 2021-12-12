@@ -34,7 +34,12 @@ const orderSchema = new Schema<IOrder>({
         type: String,
         required: false,
         trim: true
-    }        
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'  
+    } 
 });
 
 const Order = model('order', orderSchema);

@@ -7,6 +7,7 @@ interface IUser extends Document {
     password: string;
     address: string;
     admin: boolean;
+    tokens: Array<object>;
 }
 
 export = IUser;

@@ -1,5 +1,5 @@
 import {Schema, model} from 'mongoose';
-
+import IMenu from "../interfaces/menu";
 
 interface Menu {
     foodname: string;
@@ -9,7 +9,7 @@ interface Menu {
 
 
 
-const menuSchema = new Schema<Menu>({
+const menuSchema = new Schema<IMenu>({
     foodname: {
         type: String,
         required: true

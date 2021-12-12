@@ -1,23 +1,31 @@
 import jwt from 'jsonwebtoken';
-import Uset from '../models/user';
+import { Request, Response, NextFunction } from 'express';
+import User from '../models/user';
 
+interface JwtPayload {
+    _id: string
+  }
 
-const auth = async (req, res, next)=>{
+export const auth = async (req: Request, res: Response, next: NextFunction)=>{
 
     try {
-        const token = req.header('Authorization').replace('Bearer ', '');
-        const decoded = jwt.verify(token, "BOLUWATIFE");
-        const user = await User.findOne({ _id: decoded._id, 'tokens.token': token})
-
-        if(!user){
+        const token: string | undefined | string[] = req.headers.authorization?.replace('Bearer ', '');
+        // const token: string | undefined  = req.header.authorization.replace('Bearer ', '');
+        if (token){
+            const { _id } = jwt.verify(token, "BOLUWATIFE") as JwtPayload;
+            // console.log(decoded);
+            const user = await User.findOne({ _id: _id, 'tokens.token': token})
+            if(!user){
+                throw new Error()
+            }
+            req.token = token
+            req.user = user
+            next()
+        }else{
             throw new Error()
         }
-        req.token = token
-        req.user = user
-        next()
+
     } catch (error) {
         res.status(401).send({error: 'please provide authentication'})
     }
 }
-
-exports = auth 

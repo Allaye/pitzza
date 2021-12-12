@@ -1,7 +1,8 @@
-import { Document } from "mongoose";
+import { Document, Model } from "mongoose";
 
 
-interface IUser extends Document {
+export interface IUser{
+    [x: string]: any;
     name: string;
     email: string;
     password: string;
@@ -10,4 +11,7 @@ interface IUser extends Document {
     tokens: Array<object>;
 }
 
-export = IUser;
+export interface UserModel extends Model<IUser> {
+    findByCredentials(email: string, password: string): Promise<IUser>;
+}
+

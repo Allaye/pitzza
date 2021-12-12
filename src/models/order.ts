@@ -1,5 +1,5 @@
 import {Schema, model} from 'mongoose';
-
+import IOrder from "../interfaces/order";
 
 interface Order {
     foodname: string;
@@ -10,7 +10,7 @@ interface Order {
 }
 
 
-const orderSchema = new Schema<Order>({
+const orderSchema = new Schema<IOrder>({
     foodname: {
         type: String,
         required: true

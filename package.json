@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "npx tsc && node build/app.js",
+    "stop-win": "Taskkill /IM node.exe /F",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "@types/jsonwebtoken": "^8.5.6",
     "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.1",

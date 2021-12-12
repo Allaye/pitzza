@@ -46,7 +46,7 @@ const userSchema = new Schema<IUser, UserModel>({
 userSchema.virtual('orders', {
     ref: 'Order',
     localField: '_id',
-    foreignField: 'user'
+    foreignField: 'owner'
 });
 
 

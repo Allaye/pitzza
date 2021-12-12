@@ -4,22 +4,26 @@ import Order from '../models/order';
 
 
 const addOrder = async (req: Request, res: Response) => {
-    const newOrder = new Order(req.body);
-    newOrder.save((err: any, order: Order) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(order);
-    });
+    const newOrder = new Order({...req.body, owner: req.user._id});
+    try{
+        await newOrder.save();
+        res.status(201).send(newOrder);
+    }catch (e) {
+        res.status(400).send(e);
+    }
 };
 
 const getOrders = async (req: Request, res: Response) => {
-    Order.find({}, (err: any, order: Order) => {
-        if (err) {
-            res.send(err);
+    try{
+        const orders = await Order.find({owner: req.user._id});
+        if(!orders){
+            res.status(204).send(orders);
+        }else{
+        res.status(200).send(orders);
         }
-        res.json(order);
-    });
+    }catch (e) {
+        res.status(500).send(e);
+    }
 };
 
 const getOrderById = async (req: Request, res: Response) => {

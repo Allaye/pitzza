@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import mongoose, { Document } from "mongoose";
 
 
 interface IOrder extends Document {
@@ -7,6 +7,7 @@ interface IOrder extends Document {
     price: number;
     total: number;
     comments: string;
+    owner: mongoose.Schema.Types.ObjectId;
 }
 
 export = IOrder;

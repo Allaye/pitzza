@@ -11,6 +11,7 @@
 ### To run the test suite and generate the coverage report:
   make sure you have installed the project using "npm install" command
   and navigate to the project directory 🧭:
+  the testing code is located in the "test" folder 📂
 5. Run the test suite using "npm test" command 🧪:
    the coverage report will be generated 📊:
 

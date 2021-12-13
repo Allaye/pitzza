@@ -1,6 +1,13 @@
 import request from 'supertest';
 import app from '../src/app';
-import Menu from '../src/models/menu';
+// import Menu from '../src/models/menu';
+import {connect, closeDatabase, clearDatabase } from "../src/db/mongoose";
+
+beforeAll(async () => await connect());
+
+afterEach(async () => await clearDatabase());
+
+afterAll(async () => await closeDatabase());
 
 describe("test for Menu routes", () => {
     const menu = {

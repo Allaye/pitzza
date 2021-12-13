@@ -7,7 +7,7 @@ const userRouter: Router = Router();
 userRouter.post("/registration",  register);
 userRouter.post("/login", login);
 userRouter.post("/logout", auth, logout);
-userRouter.patch("/update/user/:id", updateUser);
+userRouter.patch("/update/user", auth, updateUser);
 // orderRouter.delete("/delete/order/:id", deleteOrder);
 
 export = userRouter;

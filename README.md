@@ -57,9 +57,14 @@
         "email": "jondoe@goe.com",
         "password": "12345678",
     }
+    ### response:
+    {
+        userobject
+        token:"erszretgdgyjcfhfghh"
+    }
 ```
 
-9. create a new order using the below command:
+9. create a new order using the below command need to pass token to this endpoint:
 ```### endpoint: /create/order
     ### method: POST
     ### request body:
@@ -68,6 +73,7 @@
         "quantity": 1,
         "comment": "i want the food quickly",
     }
+    Bearer token: "erszretgdgyjcfhfghh"
 
     ### response:
     {

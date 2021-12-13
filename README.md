@@ -11,7 +11,12 @@
 ### To run the test suite:
 5. Run the test suite using "npm test" command: 
 
+## 🛠 Technologies
+This project was built using the following technologies:
+    nodejs, typescript, mongodb, express, mongoose orm and the jest testing framework.
 
+To be able to run the project on your local machine, you will need to install the following dependencies:
+   mongocompass (for mongodb)
 
 ## Usage endpoints flow
 

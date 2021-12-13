@@ -1,5 +1,4 @@
 import {Router} from "express";
-// import {addOrder, getOrders, getOrderById, updateOrder, deleteOrder} from "../controllers/order";
 import UserController from "../controllers/user";
 import {auth} from "../middleware/auth";
 const userRouter: Router = Router();

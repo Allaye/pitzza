@@ -16,7 +16,7 @@ Project installation:
 ## Usage endpoints flow
 
 6. create some menu items using the below command:
-    ### endpoint: /create/menu
+```### endpoint: /create/menu
     ### method: POST
     ### request body:
     {
@@ -35,9 +35,9 @@ Project installation:
             "description": "burger with cheese",
         }
     }
-
+```
 7. register as a user using the below command:
-    ### endpoint: /create/user
+```### endpoint: /create/user
     ### method: POST
     ### request body:
     {
@@ -47,4 +47,4 @@ Project installation:
         "password": "12345678",
         "address" : "123, street, city, country",
     }
-    
+```

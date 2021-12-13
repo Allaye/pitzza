@@ -8,8 +8,11 @@
 3. Install the project using "npm install" command:
 4. Run the project using "npm start" command 👟:
 
-### To run the test suite:
+### To run the test suite and generate the coverage report:
+  make sure you have installed the project using "npm install" command
+  and navigate to the project directory 🧭:
 5. Run the test suite using "npm test" command 🧪:
+   the coverage report will be generated 📊:
 
 ## 🛠 Technologies
 This project was built using the following technologies:
@@ -106,3 +109,5 @@ this endpoint is used to create a new order, it expects a json object with the f
     "message": "Order added successfully"
     }
 ```
+
+<b>NB without a local instance of mongodb the db connection is going to fail</b>

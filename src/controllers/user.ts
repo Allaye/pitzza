@@ -55,3 +55,23 @@ export const logout = async (req: Request, res: Response) => {
         res.status(500).send(err);
     }
 }   
+
+export const updateUser = async (req: Request, res: Response) => {
+    const updates = Object.keys(req.body);
+    const allowupdates = ['name', 'age', 'email', 'password']
+    const isvalidoperation = updates.every((update)=>{
+        return allowupdates.includes(update)
+    })
+    if(!isvalidoperation){
+        return res.status(400).send({error: 'Invalid updates'});
+    }
+    try{
+        updates.forEach((update)=>{
+            req.user[update] = req.body[update];
+        })
+        await req.user.save();
+        res.send(req.user);
+    }catch(err){
+        res.status(400).send(err);
+    }
+}

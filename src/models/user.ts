@@ -2,8 +2,8 @@ import {Schema, model, Document} from 'mongoose';
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {IUser, UserModel} from "../interfaces/user.js";
-import Order from '../models/order.js';
+import {IUser, UserModel} from "../interfaces/user";
+import Order from '../models/order';
 // import dotenv from "dotenv";
 // dotenv.config("../../.env");
 

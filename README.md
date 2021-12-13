@@ -1,12 +1,12 @@
 # pitzza
 <h1>An API for pitzza delivery<h1>
 
-Project installation:
+# Project installation:
 
-1. Clone the repository:
-2. Navigate to the  project directory:
-3. Install the project using "npm install" command:
-4. Run the project using "npm start" command:
+1. ### Clone the repository:
+2. ### Navigate to the  project directory:
+3. ### Install the project using "npm install" command:
+4. ### Run the project using "npm start" command:
 
 ### To run the test suite:
 5. Run the test suite using "npm test" command: 
@@ -37,7 +37,7 @@ Project installation:
     }
 ```
 7. register as a user using the below command:
-```### endpoint: /create/user
+```### endpoint: /registration
     ### method: POST
     ### request body:
     {
@@ -46,5 +46,31 @@ Project installation:
         "email": "jondoe@goe.com",
         "password": "12345678",
         "address" : "123, street, city, country",
+    }
+```
+
+8. login as a user using the below command:
+```### endpoint: /login
+    ### method: POST
+    ### request body:
+    {
+        "email": "jondoe@goe.com",
+        "password": "12345678",
+    }
+```
+
+9. create a new order using the below command:
+```### endpoint: /create/order
+    ### method: POST
+    ### request body:
+    {
+        "foodname": "rice",
+        "quantity": 1,
+        "comment": "i want the food quickly",
+    }
+
+    ### response:
+    {
+    "message": "Order added successfully"
     }
 ```

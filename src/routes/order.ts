@@ -1,12 +1,12 @@
 import {Router} from "express";
-import {addOrder, getOrders, getOrderById, updateOrder, deleteOrder} from "../controllers/order";
+import OrderController from "../controllers/order";
 import {auth} from "../middleware/auth";
 const orderRouter: Router = Router();
 
-orderRouter.post("/create/order", auth, addOrder);
-orderRouter.get("/get/orders", auth, getOrders);
-orderRouter.get("/get/order/:id", auth, getOrderById);
-orderRouter.patch("/update/order/:id", auth, updateOrder);
-orderRouter.delete("/delete/order/:id", auth, deleteOrder);
+orderRouter.post("/create/order", auth, OrderController.addOrder);
+orderRouter.get("/get/orders", auth, OrderController.getOrders);
+orderRouter.get("/get/order/:id", auth, OrderController.getOrderById);
+orderRouter.patch("/update/order/:id", auth, OrderController.updateOrder);
+orderRouter.delete("/delete/order/:id", auth, OrderController.deleteOrder);
 
 export = orderRouter;

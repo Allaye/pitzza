@@ -42,6 +42,7 @@ To be able to run the project on your local machine, you will need to install th
     }
 ```
 7. register as a user using the below command:
+this endpoint is used to register a user, it expects a json object with the following properties:
 ```### endpoint: /registration
     ### method: POST
     ### request body:
@@ -52,9 +53,26 @@ To be able to run the project on your local machine, you will need to install th
         "password": "12345678",
         "address" : "123, street, city, country",
     }
+
+    ### response:
+the endpoint return a response object with the registration details and a token
+    {
+        "status": "success",
+        {
+            
+        "firstname": "John",
+        "lastname": "Doe",
+        "email": "jondoe@goe.com",
+        "password": "12345678",
+        "address" : "123, street, city, country",
+        "tokens: [token: "asdfgfbdfrdvczdfgfhffre324546gfg"]
+        }
+    }
 ```
 
 8. login as a user using the below command:
+this endpoint is used to login a user, it expects an email and a password used in registration 
+<b>NB this is a protected endpoint</b>
 ```### endpoint: /login
     ### method: POST
     ### request body:
@@ -63,6 +81,7 @@ To be able to run the project on your local machine, you will need to install th
         "password": "12345678",
     }
     ### response:
+the endpoint return a response object attached with a token
     {
         userobject
         token:"erszretgdgyjcfhfghh"
@@ -70,6 +89,8 @@ To be able to run the project on your local machine, you will need to install th
 ```
 
 9. create a new order using the below command need to pass token to this endpoint:
+this endpoint is used to create a new order, it expects a json object with the following properties:
+<b>NB this is a protected endpoint</b>
 ```### endpoint: /create/order
     ### method: POST
     ### request body:

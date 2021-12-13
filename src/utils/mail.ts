@@ -3,12 +3,6 @@ import * as dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.join(__dirname ,"../../.env") });
 
-let a = path.join(__dirname, "../../.env");
-console.log(a);
-console.log(__filename)
-console.log(process.env.DOMAIN);
-
-
 const mailer = new NodeMailgun();
 
 export const sendMail = async (data: any, email: string, subject: string) => {
@@ -30,13 +24,3 @@ export const sendMail = async (data: any, email: string, subject: string) => {
         console.log(error);
     }
 }
-
-// const data = {
-//     subject: "Pitzza",
-//     name: "Rice",
-//     quantity: 2,
-//     total: 200,
-//     price: 5
-// }
-
-// sendMail(data, "blexstore@gmail.com");

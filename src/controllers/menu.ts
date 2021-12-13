@@ -1,4 +1,3 @@
-import {connect} from 'mongoose';
 import {Request, Response} from 'express';
 import Menu from '../models/menu';
 
@@ -8,7 +7,6 @@ class MenuController {
     async addMenu(req: Request, res: Response){
         const menu = new Menu(req.body);
         await menu.save();
-        
         res.status(201).send(menu);
     };
     

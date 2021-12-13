@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import {connect} from 'mongoose';
 import {Request, Response} from 'express';
 import Menu from '../models/menu';
 
@@ -8,6 +8,7 @@ class MenuController {
     async addMenu(req: Request, res: Response){
         const menu = new Menu(req.body);
         await menu.save();
+        
         res.status(201).send(menu);
     };
     
@@ -19,6 +20,7 @@ class MenuController {
     async getMenu(req: Request, res: Response){
         const menu = await Menu.findById(req.params.id);
         if (!menu) return res.status(404).send('The menu with the given ID was not found.');
+        
         res.send(menu);
     }
     

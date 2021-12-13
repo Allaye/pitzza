@@ -27,4 +27,4 @@ const menuSchema = new Schema<IMenu>({
 
 const Menu = model('menu', menuSchema);
 
-export = Menu;
+export default Menu;

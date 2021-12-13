@@ -58,7 +58,7 @@ export const logout = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
     const updates = Object.keys(req.body);
-    const allowupdates = ['name', 'age', 'email', 'password']
+    const allowupdates = ['name', 'address', 'email']
     const isvalidoperation = updates.every((update)=>{
         return allowupdates.includes(update)
     })

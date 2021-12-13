@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { Request, Response } from 'express';
 import Order from '../models/order';
 import Menu from '../models/menu';
+import { sendMail } from '../utils/mail';
 
 
 const addOrder = async (req: Request, res: Response) => {
@@ -14,7 +15,8 @@ const addOrder = async (req: Request, res: Response) => {
         req.body.price = menu.price;
         const newOrder = new Order({...req.body, owner: req.user._id});
         await newOrder.save();
-        res.status(201).send(newOrder);
+        const mailresponse = await sendMail(newOrder, req.user.email, 'Order Confirmation');
+        res.status(201).send({message: 'Order added successfully', mailresponse});
     }catch (e) {
         res.status(400).send(e);
     }

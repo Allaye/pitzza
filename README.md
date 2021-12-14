@@ -3,8 +3,8 @@
 
 ## Project installation 💾💾:
 
-1. Clone the repository 🆑:
-2. Navigate to the  project directory 🧭:
+1. Clone the repository 🆑: git clone https://github.com/Allaye/pitzza.git
+2. Navigate to the  project directory 🧭: ce pitzza
 3. Install the project using "npm install" command:
 4. Run the project using "npm start" command 👟:
 
@@ -112,3 +112,7 @@ this endpoint is used to create a new order, it expects a json object with the f
 ```
 
 <b>NB without a local instance of mongodb the db connection is going to fail</b>
+
+## 📖 License
+
+This project is under license from MIT. See the [LICENSE](LICENSE.md) file for more details.
